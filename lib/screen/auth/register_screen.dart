@@ -1,21 +1,12 @@
 import 'package:e_commercefullproject/screen/auth/recovery_password.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegisterScreen extends StatefulWidget {
+import '../../controllar/authentice_controllar/register_controllar.dart';
+
+class RegisterScreen extends GetView<RegisterControllar> {
   const RegisterScreen({Key? key}) : super(key: key);
-  @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
-}
-
-class _RegisterScreenState extends State<RegisterScreen> {
-
-  final TextEditingController emailcontrollar=TextEditingController();
-  final TextEditingController passwordcontrollar=TextEditingController();
-
-  final TextEditingController namecontrollar=TextEditingController();
-  final TextEditingController confirmpasswordcontrollar=TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -79,175 +70,177 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 //               ),
                 //               fit: BoxFit.fill)),
                 //     )),
-                Positioned(
-                    right: 20,
-                    left: 20,
-                    top: 80,
-                    child: Container(
-                        height: size.height * 0.5,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
+                Padding(
+                  padding: const EdgeInsets.only(top: 80,left: 20,right: 10),
+                  child: Container(
+                      height: size.height * 0.5,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
 
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                // Text(
-                                //   "Welcome To My App",
-                                //   style: GoogleFonts.akronim(
-                                //       textStyle: TextStyle(
-                                //           fontSize: 21,
-                                //           fontWeight: FontWeight.bold,
-                                //           color: Color(0XFFa3a3a3))),
-                                // ),
-                                // SizedBox(
-                                //   height: 10,
-                                // ),
-                                // Text(
-                                //   "Discover Amazing thing Near Around you",
-                                //   style: GoogleFonts.akronim(
-                                //       textStyle: TextStyle(
-                                //           fontSize: 15,
-                                //           fontWeight: FontWeight.bold,
-                                //           color: Color(0XFFa3a3a3))),
-                                // ),
-                                // SizedBox(
-                                //   height: 35,
-                                // ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10,right: 10),
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    child: TextField(
-                                      controller:passwordcontrollar,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        hintText: 'Full Name',
-                                        filled: true,
-                                        fillColor: Color(0xFFefefef),
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(color:Colors.white60)
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(
-                                                color: Colors.white60,
-                                                width: 1
-                                            )
-                                        ),
-                                        prefixIcon: Icon(Icons.person),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Text(
+                              //   "Welcome To My App",
+                              //   style: GoogleFonts.akronim(
+                              //       textStyle: TextStyle(
+                              //           fontSize: 21,
+                              //           fontWeight: FontWeight.bold,
+                              //           color: Color(0XFFa3a3a3))),
+                              // ),
+                              // SizedBox(
+                              //   height: 10,
+                              // ),
+                              // Text(
+                              //   "Discover Amazing thing Near Around you",
+                              //   style: GoogleFonts.akronim(
+                              //       textStyle: TextStyle(
+                              //           fontSize: 15,
+                              //           fontWeight: FontWeight.bold,
+                              //           color: Color(0XFFa3a3a3))),
+                              // ),
+                               SizedBox(
+                                 height: 10,
+                               ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: TextField(
+                                    controller:controller.namecontrollar,
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      hintText: 'Full Name',
+                                      filled: true,
+                                      fillColor: Color(0xFFefefef),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(color:Colors.white60)
                                       ),
-
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(
+                                              color: Colors.white60,
+                                              width: 1
+                                          )
+                                      ),
+                                      prefixIcon: Icon(Icons.person),
                                     ),
+
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10,right: 10),
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    child: TextField(
-                                      controller:emailcontrollar,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        hintText: 'Email or Phone',
-                                        filled: true,
-                                        fillColor: Color(0xFFefefef),
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(color:Colors.white60)
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(
-                                                color: Colors.white60,
-                                                width: 1
-                                            )
-                                        ),
-                                        prefixIcon: Icon(Icons.email),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: TextField(
+                                    controller:controller.emailcontrollar,
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      hintText: 'Email or Phone',
+                                      filled: true,
+                                      fillColor: Color(0xFFefefef),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(color:Colors.white60)
                                       ),
-
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(
+                                              color: Colors.white60,
+                                              width: 1
+                                          )
+                                      ),
+                                      prefixIcon: Icon(Icons.email),
                                     ),
+
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10,right: 10),
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    child: TextField(
-                                      controller:passwordcontrollar,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        hintText: 'Password',
-                                        filled: true,
-                                        fillColor: Color(0xFFefefef),
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(color:Colors.white60)
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(
-                                                color: Colors.white60,
-                                                width: 1
-                                            )
-                                        ),
-                                        prefixIcon: Icon(Icons.key),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: TextField(
+                                    controller:controller.passwordcontrollar,
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      hintText: 'Password',
+                                      filled: true,
+                                      fillColor: Color(0xFFefefef),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(color:Colors.white60)
                                       ),
-
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(
+                                              color: Colors.white60,
+                                              width: 1
+                                          )
+                                      ),
+                                      prefixIcon: Icon(Icons.key),
                                     ),
+
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10,right: 10),
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    child: TextField(
-                                      controller:confirmpasswordcontrollar,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        hintText: 'Confirm Password',
-                                        filled: true,
-                                        fillColor: Color(0xFFefefef),
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(color:Colors.white60)
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            borderSide:BorderSide(
-                                                color: Colors.white60,
-                                                width: 1
-                                            )
-                                        ),
-                                        prefixIcon: Icon(Icons.key),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10),
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: TextField(
+                                    controller:controller.confirmpasswordcontrollar,
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      hintText: 'Confirm Password',
+                                      filled: true,
+                                      fillColor: Color(0xFFefefef),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(color:Colors.white60)
                                       ),
-
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(
+                                              color: Colors.white60,
+                                              width: 1
+                                          )
+                                      ),
+                                      prefixIcon: Icon(Icons.key),
                                     ),
+
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Padding(
-                                  padding:
-                                  const EdgeInsets.only(left: 10, right: 10),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding:
+                                const EdgeInsets.only(left: 10, right: 10),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    controller.setRegister();
+                                  },
                                   child: Container(
                                       decoration: BoxDecoration(
                                         color: Color(0xFf7972e6),
@@ -266,15 +259,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         ),
                                       )),
                                 ),
-                                // SizedBox(height: 10),
-                                // Text("Forgot Password?", style: TextStyle(
-                                //     fontWeight: FontWeight.bold,
-                                //     color: Color(0XFF7972e6),
-                                //     fontSize: 12),)
+                              ),
+                              // SizedBox(height: 10),
+                              // Text("Forgot Password?", style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //     color: Color(0XFF7972e6),
+                              //     fontSize: 12),)
 
 
-                              ]),
-                        )))
+                            ]),
+                      )),
+                )
               ],
             ),
             // Padding(
@@ -292,7 +287,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             // ),
 
 
-            SizedBox(height: 220,),
+            SizedBox(height:25,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

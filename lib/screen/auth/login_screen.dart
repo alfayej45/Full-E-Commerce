@@ -1,17 +1,11 @@
+import 'package:e_commercefullproject/controllar/authentice_controllar/login_controllar.dart';
 import 'package:e_commercefullproject/screen/auth/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends GetView<LoginControllar> {
   const LoginScreen({Key? key}) : super(key: key);
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController emailcontrollar=TextEditingController();
-  final TextEditingController passwordcontrollar=TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -74,9 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 //               ),
                 //               fit: BoxFit.fill)),
                 //     )),
-                Align(
-                 alignment: Alignment.bottomCenter,
-
+                Padding(
+                  padding: EdgeInsets.only(top: 100,left: 10,right: 10),
                   child: Container(
                       height: size.height * 0.4,
                       decoration: BoxDecoration(
@@ -96,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderRadius: BorderRadius.circular(15)
                                 ),
                                 child: TextField(
-                                  controller:emailcontrollar,
+                                  controller:controller.emailcontrollar,
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     hintText: 'Email',
@@ -127,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     borderRadius: BorderRadius.circular(15)
                                 ),
                                 child: TextField(
-                                  controller:passwordcontrollar,
+                                  controller:controller.passwordcontrollar,
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     hintText: 'Password',
@@ -154,23 +147,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             Padding(
                               padding:
                               const EdgeInsets.only(left: 10, right: 10),
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFf7972e6),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(13.0),
-                                    child: Center(
-                                      child: Text(
-                                        "Sing In",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
+                              child: GestureDetector(
+                                onTap: (){
+                                  controller.setlogn();
+                                },
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFf7972e6),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                  )),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(13.0),
+                                      child: Center(
+                                        child: Text(
+                                          "Sing In",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    )),
+                              ),
                             ),
                             SizedBox(height: 10),
                             Text("Forgot Password?", style: TextStyle(
@@ -198,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
             // ),
 
 
-            SizedBox(height: 190,),
+            SizedBox(height: 30,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

@@ -1,6 +1,8 @@
 import 'package:e_commercefullproject/screen/auth/login_screen.dart';
+import 'package:e_commercefullproject/screen/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class FindScreen extends StatefulWidget {
   const FindScreen({Key? key}) : super(key: key);
@@ -14,41 +16,40 @@ class _FindScreenState extends State<FindScreen> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0XFFdfe0e4),
-      body: Column(
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              AnimatedContainer(
-                curve: Curves.ease,
-                height: MediaQuery.of(context).size.height * .4,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: Color(0XFF7972e6),
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(25),
-                        bottomLeft: Radius.circular(25))),
-                duration: Duration(seconds: 5),
-              ),
-              Positioned(
-                  top: 10,
-                  left: 50,
-                  right: 50,
-                  child: Container(
-                    height: 150,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              "images/shoping-removebg-preview.png",
-                            ),
-                            fit: BoxFit.fill)),
-                  )),
-              Positioned(
-                  right: 30,
-                  left: 30,
-                  top: 150,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                AnimatedContainer(
+                  curve: Curves.ease,
+                  height: MediaQuery.of(context).size.height * .4,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Color(0XFF7972e6),
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(25),
+                          bottomLeft: Radius.circular(25))),
+                  duration: Duration(seconds: 5),
+                ),
+                Positioned(
+                    top: 10,
+                    left: 50,
+                    right: 50,
+                    child: Container(
+                      height: 150,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                "images/shoping-removebg-preview.png",
+                              ),
+                              fit: BoxFit.fill)),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 150,left: 20,right: 20),
                   child: Container(
                       height: size.height * 0.6,
                       decoration: BoxDecoration(
@@ -84,23 +85,28 @@ class _FindScreenState extends State<FindScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 10, right: 10),
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFf7972e6),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(13.0),
-                                    child: Center(
-                                      child: Text(
-                                        "Sing In",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
+                              child: GestureDetector(
+                                onTap: (){
+                                  Get.offAll(LoginScreen());
+                                },
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFf7972e6),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
-                                  )),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(13.0),
+                                      child: Center(
+                                        child: Text(
+                                          "Sing In",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    )),
+                              ),
                             ),
                             SizedBox(
                               height: 15,
@@ -108,24 +114,29 @@ class _FindScreenState extends State<FindScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 10, right: 10),
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                          color: Color(0xFf7972e6),
-                                          width: 1.5)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(13.0),
-                                    child: Center(
-                                      child: Text(
-                                        "Sing Up",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFf7972e6)),
+                              child: GestureDetector(
+                                onTap: (){
+                                  Get.offAll(RegisterScreen());
+                                },
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Color(0xFf7972e6),
+                                            width: 1.5)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(13.0),
+                                      child: Center(
+                                        child: Text(
+                                          "Sing Up",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xFf7972e6)),
+                                        ),
                                       ),
-                                    ),
-                                  )),
+                                    )),
+                              ),
                             ),
                             SizedBox(
                               height: 15,
@@ -254,29 +265,31 @@ class _FindScreenState extends State<FindScreen> {
                                 ),
                               ],
                             )
-                          ])))
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 310),
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: InkWell(
-                onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>LoginScreen()));
-
-                },
-                child: Text(
-                  "SKIP",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0XFFa3a3a3),
-                      fontSize: 23),
-                ),
-              ),
+                          ])),
+                )
+              ],
             ),
-          ),
-        ],
+            // Padding(
+            //   padding: const EdgeInsets.only(top:),
+            //   child: Align(
+            //     alignment: Alignment.topCenter,
+            //     child: InkWell(
+            //       onTap: (){
+            //         Navigator.of(context).push(MaterialPageRoute(builder: (_)=>LoginScreen()));
+            //
+            //       },
+            //       child: Text(
+            //         "SKIP",
+            //         style: TextStyle(
+            //             fontWeight: FontWeight.bold,
+            //             color: Color(0XFFa3a3a3),
+            //             fontSize: 23),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }
