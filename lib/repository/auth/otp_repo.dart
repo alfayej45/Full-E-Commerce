@@ -36,8 +36,6 @@ class OtpRepository{
              Get.offAll(LoginScreen());
             return response.data;
           }
-      
-
 
    }catch(e){
      final errorMessage = DioExceptions.fromDioError(e as DioError).toString();

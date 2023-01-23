@@ -38,6 +38,7 @@ class RegisterRepository{
             print(response.data);
             ToastWidget().success("${response.data["message"]}");
             box.put("userid", response.data["user_id"]);
+            // box.put("getemail_or_phone", response.data[""]);
             Get.to(OtpPage());
             return response.data;
           }

@@ -5,9 +5,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends GetView<LoginControllar> {
-  const LoginScreen({Key? key}) : super(key: key);
+
+   LoginScreen({Key? key}) : super(key: key);
+  // bool visibility=true;
   @override
   Widget build(BuildContext context) {
+
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -15,7 +18,7 @@ class LoginScreen extends GetView<LoginControllar> {
         backgroundColor: Color(0XFF7972e6),
       ),
       backgroundColor: Color(0XFFdfe0e4),
-      body: SingleChildScrollView(
+      body:SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -86,7 +89,7 @@ class LoginScreen extends GetView<LoginControllar> {
                               child: Container(
                                 height: 50,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15)
+                                    borderRadius: BorderRadius.circular(15)
                                 ),
                                 child: TextField(
                                   controller:controller.emailcontrollar,
@@ -121,23 +124,31 @@ class LoginScreen extends GetView<LoginControllar> {
                                 ),
                                 child: TextField(
                                   controller:controller.passwordcontrollar,
+                                  obscureText: controller.visibiliti,
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
-                                    hintText: 'Password',
-                                    filled: true,
-                                    fillColor: Color(0xFFefefef),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide:BorderSide(color:Colors.white60)
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide:BorderSide(
-                                            color: Colors.white60,
-                                            width: 1
-                                        )
-                                    ),
-                                    prefixIcon: Icon(Icons.key),
+                                      hintText: 'Password',
+                                      filled: true,
+                                      fillColor: Color(0xFFefefef),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(color:Colors.white60)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide:BorderSide(
+                                              color: Colors.white60,
+                                              width: 1
+                                          )
+                                      ),
+                                      prefixIcon: Icon(Icons.key),
+                                      suffixIcon: Obx(() => InkWell(
+                                          onTap: (){
+                                            controller.onChenge();
+                                          },
+                                          child:controller.visibiliti ?Icon(Icons.visibility):
+                                          Icon(Icons.visibility_off)))
+                                      
                                   ),
 
                                 ),
@@ -340,7 +351,8 @@ class LoginScreen extends GetView<LoginControllar> {
             ),
           ],
         ),
-      ),
+      )
     );
   }
+
 }
