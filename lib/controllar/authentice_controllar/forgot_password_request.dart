@@ -6,4 +6,7 @@ class ForgotPasswordRequestControllar extends GetxController {
 
 
 
+
+
+
 }

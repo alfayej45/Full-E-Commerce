@@ -16,9 +16,10 @@ class LoginScreen extends GetView<LoginControllar> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Color(0XFF7972e6),
+
       ),
       backgroundColor: Color(0XFFdfe0e4),
-      body:SingleChildScrollView(
+      body:Obx(() => SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -124,7 +125,7 @@ class LoginScreen extends GetView<LoginControllar> {
                                 ),
                                 child: TextField(
                                   controller:controller.passwordcontrollar,
-                                  obscureText: controller.visibiliti,
+                                  obscureText: controller.visibiliti.value,
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                       hintText: 'Password',
@@ -142,13 +143,13 @@ class LoginScreen extends GetView<LoginControllar> {
                                           )
                                       ),
                                       prefixIcon: Icon(Icons.key),
-                                      suffixIcon: Obx(() => InkWell(
+                                      suffixIcon: InkWell(
                                           onTap: (){
                                             controller.onChenge();
                                           },
-                                          child:controller.visibiliti ?Icon(Icons.visibility):
-                                          Icon(Icons.visibility_off)))
-                                      
+                                          child:controller.visibiliti.value ?Icon(Icons.visibility):
+                                          Icon(Icons.visibility_off))
+
                                   ),
 
                                 ),
@@ -351,7 +352,7 @@ class LoginScreen extends GetView<LoginControllar> {
             ),
           ],
         ),
-      )
+      ))
     );
   }
 

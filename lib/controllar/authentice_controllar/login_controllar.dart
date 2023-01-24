@@ -8,7 +8,8 @@ class LoginControllar extends GetxController{
 
   var  emailcontrollar=TextEditingController();
   var  passwordcontrollar=TextEditingController();
-  bool visibiliti=true;
+
+  var visibiliti=true.obs;
 
   LoginRepository loginRepository=LoginRepository();
 
@@ -16,7 +17,6 @@ class LoginControllar extends GetxController{
   void onInit() {
        emailcontrollar=TextEditingController();
        passwordcontrollar=TextEditingController();
-       onChenge();
     // TODO: implement onInit
     super.onInit();
   }
@@ -33,7 +33,7 @@ class LoginControllar extends GetxController{
      
   }
   void onChenge(){
-    visibiliti=!visibiliti;
+    visibiliti.value=!visibiliti.value;
     print("Visibility...${visibiliti}");
   }
 

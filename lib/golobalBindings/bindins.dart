@@ -5,6 +5,8 @@ import 'package:e_commercefullproject/controllar/authentice_controllar/otp_contr
 import 'package:e_commercefullproject/controllar/authentice_controllar/register_controllar.dart';
 import 'package:get/get.dart';
 
+import '../controllar/product_controllar/allproductpaginetions_controllar.dart';
+
 class GolobalBindings implements Bindings{
   @override
   void dependencies() {
@@ -12,6 +14,7 @@ class GolobalBindings implements Bindings{
     Get.lazyPut<RegisterControllar>(() => RegisterControllar());
     Get.lazyPut<OtpCntrollar>(() => OtpCntrollar());
     Get.lazyPut<ForgotPasswordRequestControllar>(() => ForgotPasswordRequestControllar());
+    Get.lazyPut<AllProductPaginetionsControllar>(() => AllProductPaginetionsControllar());
     // TODO: implement dependencies
   }
 

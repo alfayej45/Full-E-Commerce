@@ -15,8 +15,8 @@ import '../../golobalWidgets/exceptions.dart';
 class RegisterRepository{
   var dio=Dio();
   var box=Hive.box("user");
-  RegisterModel? registerModel;
-  Future getRegister(String name,String email,String password,String compassword)async{
+
+  Future<RegisterModel?> getRegister(String name,String email,String password,String compassword)async{
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (HttpClient dioClient) {
         dioClient.badCertificateCallback =
@@ -25,22 +25,22 @@ class RegisterRepository{
       };
       try{
         var response= await dio.post("https://khejuria.com/api/v2/auth/signup",
-          queryParameters: {
+          data: {
           "name":"$name",
           "email_or_phone":"$email",
           "password":"$password",
           "passowrd_confirmation":"$compassword",
-
           });
-        print(response.data);
-
+         print(response.data);
         if(response.data["result"]==true) {
             print(response.data);
             ToastWidget().success("${response.data["message"]}");
             box.put("userid", response.data["user_id"]);
+
+            box.put("email_or_phone", email);
             // box.put("getemail_or_phone", response.data[""]);
             Get.to(OtpPage());
-            return response.data;
+            return registerModelFromJson(response.data);
           }
 
       }catch(e){

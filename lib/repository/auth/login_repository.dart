@@ -5,6 +5,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:e_commercefullproject/golobalWidgets/toast/fluttertoast.dart';
 import 'package:e_commercefullproject/model/auth_model/login_model.dart';
+import 'package:e_commercefullproject/screen/bottom_nav_bar/bottom_bar.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -36,7 +37,7 @@ class LoginRepository{
 
       print(response.data);
       box.put('access_token',"${response.data["access_token"]}");
-       Get.to(HomePage());
+       Get.to(BottomNavBar());
       return response.data;
 
     }

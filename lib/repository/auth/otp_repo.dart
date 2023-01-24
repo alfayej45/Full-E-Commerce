@@ -16,7 +16,7 @@ class OtpRepository{
   var dio=Dio();
   OtpModel? otpModel;
   
-  Future getOtp(String otpcontrollartext) async{
+  Future<OtpModel?> getOtp(String otpcontrollartext) async{
     (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient dioClient) {
       dioClient.badCertificateCallback =
@@ -26,7 +26,7 @@ class OtpRepository{
   
    try{
      var response=await dio.post("${BaseUrl.BASE_URL}auth/confirm_code",
-         queryParameters: {
+         data: {
            "user_id":"${box.get("userid")}",
            "verification_code":"$otpcontrollartext"
          });
@@ -34,7 +34,7 @@ class OtpRepository{
             print(response.data);
             ToastWidget().success(response.data["message"]);
              Get.offAll(LoginScreen());
-            return response.data;
+            return otpModelFromJson(response.data);
           }
 
    }catch(e){

@@ -1,5 +1,7 @@
 import 'package:e_commercefullproject/golobalBindings/bindins.dart';
 import 'package:e_commercefullproject/screen/auth/find_screen.dart';
+import 'package:e_commercefullproject/screen/auth/home_page/homepage.dart';
+import 'package:e_commercefullproject/screen/bottom_nav_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -23,8 +25,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // iconTheme: IconThemeData(
+        //   color: Colors.grey
+        // )
       ),
-      home: FindScreen()
+
+      home: BottomNavBar()
     );
   }
 }
