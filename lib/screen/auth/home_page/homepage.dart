@@ -129,8 +129,8 @@ class HomePage extends GetView<AllProductPaginetionsControllar> {
                   color: Colors.grey),),
             ),
             SizedBox(height: 10,),
-
             Obx(() => GridView.builder(
+
                 shrinkWrap: true,
                 physics:const NeverScrollableScrollPhysics(),
                 itemCount: controller.allproductlist.value.data!.length,
@@ -139,11 +139,17 @@ class HomePage extends GetView<AllProductPaginetionsControllar> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 0.0,
                     mainAxisSpacing: 0.0,
-                    childAspectRatio: 0.6),
-                itemBuilder: (context, index) {
+                    childAspectRatio: 0.7),
+                   itemBuilder: (context, index) {
+
+                     var datalist=controller.allproductlist.value.data![index];
+
+                     print("image....${datalist.thumbnailImage}");
                   print("data....${controller.allproductlist.value.data![index].name}");
                   return FeaturedProductsWidget(
-                    name: "${controller.allproductlist.value.data![index].name}",
+                    name: "${datalist.name}",
+                    image: "${datalist.thumbnailImage}",
+                    price: "${datalist.mainPrice}",
 
                   );
                 }))
